@@ -1,0 +1,35 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="LegacyPortal.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="ja">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>社内申請ポータル</title>
+    <script type="text/javascript">
+      (() => {
+        const param = new URLSearchParams(window.location.search).get("scoutTheme");
+        const theme =
+          param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <link rel="stylesheet" type="text/css" href="Content/portal.css" />
+</head>
+<body>
+    <form id="PortalForm" runat="server">
+        <div class="shell">
+            <div class="header">
+                <div class="identity">社内申請ポータル</div>
+                <div class="notice">架空データを使うローカル教材です。実業務・外部公開には使用しないでください。</div>
+                <div class="navigation">
+                    <a href="Default.aspx">申請一覧</a>
+                    <a href="NewRequest.aspx">新規申請</a>
+                </div>
+            </div>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <div class="footer">日時は日本時間（JST）で表示します。認証・通知・添付はありません。</div>
+        </div>
+    </form>
+</body>
+</html>
